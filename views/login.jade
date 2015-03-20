@@ -1,0 +1,33 @@
+doctype html
+head
+    title Dashboard :: Login
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css')
+    link(rel='stylesheet', href='stylesheets/style.css')
+  body
+      h1= name
+      - function isEmptyObject(obj) {
+      -   var name;
+      -   for (name in obj) {
+      -   return false;
+      - }
+      - return true;
+      -} 
+      - if (isEmptyObject(errors) == false)
+        p.errorMessage= "The following errors occurred:"
+        ul  
+         - each error in errors
+           li= error.msg 
+
+
+      hr
+      form(id='login-form', method='POST', action='/login')
+        .form-group
+          label(for='username') Username
+          input(type='text', name='username', class='form-control', id='username', placeholder='Enter username')
+        .form-group
+          label(for='password') Password
+          input(type='password', name='password', class='form-control', id='password', placeholder='Enter password')
+        .form-group
+          button.btn.btn-default Login  
+          a(href="register")
+  
